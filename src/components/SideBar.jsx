@@ -17,7 +17,22 @@ import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
-import { Link } from "react-router-dom";
+import { HomeOutlined } from "@mui/icons-material";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
+import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import { grey } from "@mui/material/colors";
+import { Avatar, Tooltip, Typography } from "@mui/material";
+import img from "./images/istockphoto-1682296067-612x612.jpg";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -70,6 +85,7 @@ const Drawer = styled(MuiDrawer, {
 
 export default function SideBar({ open, handleDrawerClose }) {
   const theme = useTheme();
+  let navigate = useNavigate();
 
   const array1 = [
     {
@@ -93,6 +109,26 @@ export default function SideBar({ open, handleDrawerClose }) {
       path: "/invoices",
     },
   ];
+  const Array2 = [
+    { text: "Profile Form", icon: <PersonOutlinedIcon />, path: "/form" },
+    {
+      text: "Calendar",
+      icon: <CalendarTodayOutlinedIcon />,
+      path: "/calendar",
+    },
+    {
+      text: "FAQ Page",
+      icon: <HelpOutlineOutlinedIcon />,
+      path: "/faq",
+    },
+  ];
+
+  const Array3 = [
+    { text: "Bar Chart", icon: <BarChartOutlinedIcon />, path: "/bar" },
+    { text: "Pie Chart", icon: <PieChartOutlineOutlinedIcon />, path: "/pie" },
+    { text: "Line Chart", icon: <TimelineOutlinedIcon />, path: "/line" },
+    { text: "Geography Chart", icon: <MapOutlinedIcon />, path: "/geography" },
+  ];
 
   return (
     <Drawer variant="permanent" open={open}>
@@ -106,11 +142,43 @@ export default function SideBar({ open, handleDrawerClose }) {
         </IconButton>
       </DrawerHeader>
       <Divider />
+      <Avatar
+        sx={{
+          mx: "auto",
+          my: 1,
+          border: "2px solid grey",
+          width: open ? 88 : 44,
+          height: open ? 88 : 44,
+          transition: "0.3s",
+        }}
+        alt="Remy Sharp"
+        src={img}
+      />
+      <Typography
+        sx={{ fontSize: open ? 17 : 0, transition: "0.3s" }}
+        align="center"
+        variant="h6"
+        component="h2"
+      >
+        mohamed mostafa
+      </Typography>
+      <Typography
+        sx={{ fontSize: open ? 15 : 0, transition: "0.3s", mb: 2, color: theme.palette.info.main }}
+        align="center"
+        variant="subtitle1"
+        component="p"
+      >
+        Admin
+      </Typography>
+
+      <Divider />
       <List>
         {array1.map((item) => (
-          <Link to={item.path}>
             <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
               <ListItemButton
+              onClick={() => {
+                navigate(item.path);
+              }}
                 sx={[
                   { minHeight: 48, px: 2.5 },
                   open
@@ -132,62 +200,83 @@ export default function SideBar({ open, handleDrawerClose }) {
                 />
               </ListItemButton>
             </ListItem>
-          </Link>
         ))}
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={[
-                { minHeight: 48, px: 2.5 },
-                open
-                  ? { justifyContent: "initial" }
-                  : { justifyContent: "center" },
-              ]}
-            >
-              <ListItemIcon
-                sx={[
-                  { minWidth: 0, justifyContent: "center" },
-                  open ? { mr: 3 } : { mr: "auto" },
-                ]}
+        {Array2.map((item) => (
+          <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
+            <Tooltip title={open ? null : item.text} placement="left">
+              <ListItemButton
+                onClick={() => {
+                  navigate(item.path);
+                }}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  bgcolor:
+                    location.pathname === item.path
+                      ? theme.palette.mode === "dark"
+                        ? grey[800]
+                        : grey[300]
+                      : null,
+                }}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText
-                primary={text}
-                sx={[open ? { opacity: 1 } : { opacity: 0 }]}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.text}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </Tooltip>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={[
-                { minHeight: 48, px: 2.5 },
-                open
-                  ? { justifyContent: "initial" }
-                  : { justifyContent: "center" },
-              ]}
-            >
-              <ListItemIcon
-                sx={[
-                  { minWidth: 0, justifyContent: "center" },
-                  open ? { mr: 3 } : { mr: "auto" },
-                ]}
+        {Array3.map((item) => (
+          <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
+            <Tooltip title={open ? null : item.text} placement="left">
+              <ListItemButton
+                onClick={() => {
+                  navigate(item.path);
+                }}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  bgcolor:
+                    location.pathname === item.path
+                      ? theme.palette.mode === "dark"
+                        ? grey[800]
+                        : grey[300]
+                      : null,
+                }}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText
-                primary={text}
-                sx={[open ? { opacity: 1 } : { opacity: 0 }]}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.text}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </Tooltip>
           </ListItem>
         ))}
       </List>

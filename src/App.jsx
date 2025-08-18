@@ -18,7 +18,7 @@ function App() {
 
 // dark mode change 
   const [mode, setMode] = React.useState(
-     Boolean(localStorage.getItem("currentMode"))
+     (localStorage.getItem("currentMode"))
       ? localStorage.getItem("currentMode")
       : "light"
   );
@@ -39,6 +39,7 @@ function App() {
             <DrawerHeader />
             <Typography sx={{ marginBottom: 2 }}>
               gelgl abo glagel
+              <span>بيقول كسم ذياد هشام </span>
             </Typography>
           </Box>
         </Box>
