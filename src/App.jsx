@@ -4,6 +4,7 @@ import { getDesignTokens } from "./Theme";
 import { Box, CssBaseline, Typography } from "@mui/material";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
+import { Outlet } from "react-router-dom";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
@@ -37,10 +38,7 @@ function App() {
           <SideBar open={open} handleDrawerClose={handleDrawerClose} />
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <DrawerHeader />
-            <Typography sx={{ marginBottom: 2 }}>
-              gelgl abo glagel
-              <span>بيقول كسم ذياد هشام </span>
-            </Typography>
+            <Outlet />
           </Box>
         </Box>
       </ThemeProvider>

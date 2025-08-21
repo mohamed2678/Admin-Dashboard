@@ -31,8 +31,8 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { grey } from "@mui/material/colors";
 import { Avatar, Tooltip, Typography } from "@mui/material";
-import img from "./images/istockphoto-1682296067-612x612.jpg";
-import { useNavigate } from "react-router-dom";
+import img from "../assets/images/istockphoto-1682296067-612x612.jpg";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -86,6 +86,7 @@ const Drawer = styled(MuiDrawer, {
 export default function SideBar({ open, handleDrawerClose }) {
   const theme = useTheme();
   let navigate = useNavigate();
+  let location = useLocation();
 
   const array1 = [
     {
@@ -96,7 +97,7 @@ export default function SideBar({ open, handleDrawerClose }) {
     {
       name: "Manage Team",
       icon: <GroupsOutlinedIcon />,
-      path: "/manage-team",
+      path: "/team",
     },
     {
       name: "Contacts information",
@@ -163,7 +164,12 @@ export default function SideBar({ open, handleDrawerClose }) {
         mohamed mostafa
       </Typography>
       <Typography
-        sx={{ fontSize: open ? 15 : 0, transition: "0.3s", mb: 2, color: theme.palette.info.main }}
+        sx={{
+          fontSize: open ? 15 : 0,
+          transition: "0.3s",
+          mb: 2,
+          color: theme.palette.info.main,
+        }}
         align="center"
         variant="subtitle1"
         component="p"
@@ -174,32 +180,40 @@ export default function SideBar({ open, handleDrawerClose }) {
       <Divider />
       <List>
         {array1.map((item) => (
-            <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+          <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
+            <ListItemButton
               onClick={() => {
                 navigate(item.path);
               }}
+              sx={[
+                { minHeight: 48, px: 2.5 },
+                open
+                  ? { justifyContent: "initial" }
+                  : { justifyContent: "center" },
+                {
+                  bgcolor:
+                    location.pathname === item.path
+                      ? theme.palette.mode === "dark"
+                        ? grey[800]
+                        : grey[300]
+                      : null,
+                },
+              ]}
+            >
+              <ListItemIcon
                 sx={[
-                  { minHeight: 48, px: 2.5 },
-                  open
-                    ? { justifyContent: "initial" }
-                    : { justifyContent: "center" },
+                  { minWidth: 0, justifyContent: "center" },
+                  open ? { mr: 3 } : { mr: "auto" },
                 ]}
               >
-                <ListItemIcon
-                  sx={[
-                    { minWidth: 0, justifyContent: "center" },
-                    open ? { mr: 3 } : { mr: "auto" },
-                  ]}
-                >
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.name}
-                  sx={[open ? { opacity: 1 } : { opacity: 0 }]}
-                />
-              </ListItemButton>
-            </ListItem>
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={item.name}
+                sx={[open ? { opacity: 1 } : { opacity: 0 }]}
+              />
+            </ListItemButton>
+          </ListItem>
         ))}
       </List>
       <Divider />
