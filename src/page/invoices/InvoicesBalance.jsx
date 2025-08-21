@@ -1,9 +1,23 @@
-import React from 'react'
+import * as React from "react";
 
-function InvoicesBalance() {
+import {rows, columns} from "./DataInvoices";
+import { DataGrid } from "@mui/x-data-grid";
+import { Box } from "@mui/material";
+
+
+
+
+
+
+export default function AssistantWithDataSampling() {
   return (
-    <div>InvoicesBalance</div>
-  )
-}
+    <Box sx={{ height: 800, width: "96%", mx: "auto" }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        showToolbar
 
-export default InvoicesBalance
+      />
+    </Box>
+  );
+}
