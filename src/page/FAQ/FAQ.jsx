@@ -6,10 +6,12 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
+import { Stack  } from "@mui/material";
+
 
 function FAQ() {
    return (
-    <div>
+    <Stack direction="column" gap={2}>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -53,7 +55,7 @@ function FAQ() {
           <Button>Agree</Button>
         </AccordionActions>
       </Accordion>
-    </div>
+    </Stack>
   );
 }
 
