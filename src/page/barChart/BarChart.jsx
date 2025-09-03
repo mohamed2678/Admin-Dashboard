@@ -1,9 +1,9 @@
 import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
-import { Box, useTheme } from "@mui/material";
+// import { Box, useTheme } from "@mui/material";
 import Bar from "./bar";
 function BarChart() {
-  const theme = useTheme();
+  // const theme = useTheme();
   
   return (
     <Bar />
