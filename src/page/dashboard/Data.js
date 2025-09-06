@@ -64,7 +64,7 @@ export const Transactions = [
   {
     txId: "01e4dsaewf",
     user: "johndoe",
-    date: "2021-09-01",
+    date: "2025-09-07",
     cost: "43.91",
   },
   {
@@ -76,7 +76,7 @@ export const Transactions = [
   {
     txId: "01e4dsaef",
     user: "aberdohnny",
-    date: "2021-09-01",
+    date: "2025-09-07",
     cost: "43.95",
   },
   {
@@ -94,13 +94,13 @@ export const Transactions = [
   {
     txId: "01e4dsa",
     user: "aberdohnny",
-    date: "2021-09-01",
+    date: "2025-09-07",
     cost: "43.95",
   },
   {
     txId: "120s51a",
     user: "wootzifer",
-    date: "2019-04-15",
+    date: "2025-09-07",
     cost: "24.20",
   },
   {
