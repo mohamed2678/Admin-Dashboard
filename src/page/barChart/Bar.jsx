@@ -2,7 +2,7 @@ import React from 'react'
 import { ResponsiveBar } from "@nivo/bar";
 import { Box, useTheme } from "@mui/material";
 
-function Bar() {
+function Bar({isDashboard = false}) {
      const theme = useTheme();
 
      const data = [
@@ -74,7 +74,7 @@ function Bar() {
 
 
   return (
-        <Box sx={{ height: "75vh" }}>
+        <Box sx={{ height: isDashboard ? "300px": "75vh"  }}>
       <ResponsiveBar /* or Bar for fixed dimensions */
         data={data}
         theme={{
