@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 
 import "./index.css";
@@ -9,17 +9,18 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App";
-import Dashboard from "./page/dashboard/Dashboard";
-import Team from "./page/team/Team";
-import Contacs from "./page/contacts/Contacts";
-import Invoices from "./page/invoices/InvoicesBalance";
-import Profile from "./page/profile/ProfileMangments";
-import Calendar from "./page/calendar/Calender";
-import FAQ from "./page/FAQ/FAQ";
-import BarChart from "./page/barChart/BarChart";
-import PieChart from "./page/PieChart/PieChart";
-import LineChart from "./page/lineChart/LineChart";
-import GeographyChart from "./page/geographyChart/GeographyChart";
+
+const Dashboard = React.lazy(() => import("./page/dashboard/Dashboard"));
+const Team = React.lazy(() => import("./page/team/Team"));
+const Contacs = React.lazy(() => import("./page/contacts/Contacts"));
+const Invoices = React.lazy(() => import("./page/invoices/InvoicesBalance"));
+const Profile = React.lazy(() => import("./page/profile/ProfileMangments"));
+const Calendar = React.lazy(() => import("./page/calendar/Calender"));
+const FAQ = React.lazy(() => import("./page/FAQ/FAQ"));
+const BarChart = React.lazy(() => import("./page/barChart/BarChart"));
+const PieChart = React.lazy(() => import("./page/PieChart/PieChart"));
+const LineChart = React.lazy(() => import("./page/lineChart/LineChart"));
+const GeographyChart = React.lazy(() => import("./page/geographyChart/GeographyChart"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +42,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Suspense fallback={<div style={{padding:20}}>Loading...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
   </React.StrictMode>
 );
