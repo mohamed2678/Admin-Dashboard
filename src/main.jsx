@@ -21,6 +21,7 @@ const BarChart = React.lazy(() => import("./page/barChart/BarChart"));
 const PieChart = React.lazy(() => import("./page/PieChart/PieChart"));
 const LineChart = React.lazy(() => import("./page/lineChart/LineChart"));
 const GeographyChart = React.lazy(() => import("./page/geographyChart/GeographyChart"));
+const NotFound = React.lazy(() => import("./page/notfound/NotFound"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
       <Route path="pie" element={<PieChart />} />
       <Route path="line" element={<LineChart />} />
       <Route path="geography" element={<GeographyChart />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );

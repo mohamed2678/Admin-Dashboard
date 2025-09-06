@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import { getDesignTokens } from "./Theme";
-import { Box, CssBaseline, Typography } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
 import { Outlet } from "react-router-dom";

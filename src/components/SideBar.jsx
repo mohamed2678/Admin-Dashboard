@@ -11,23 +11,16 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
-import { HomeOutlined } from "@mui/icons-material";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { grey } from "@mui/material/colors";
 import { Avatar, Tooltip, Typography } from "@mui/material";
@@ -90,22 +83,22 @@ export default function SideBar({ open, handleDrawerClose }) {
 
   const array1 = [
     {
-      name: "Dashboard",
+      text: "Dashboard",
       icon: <DashboardOutlinedIcon />,
       path: "/",
     },
     {
-      name: "Manage Team",
+      text: "Manage Team",
       icon: <GroupsOutlinedIcon />,
       path: "/team",
     },
     {
-      name: "Contacts information",
+      text: "Contacts information",
       icon: <ContactsOutlinedIcon />,
       path: "/contacts",
     },
     {
-      name: "Invoices Balance",
+      text: "Invoices Balance",
       icon: <DescriptionOutlinedIcon />,
       path: "/invoices",
     },
@@ -181,38 +174,40 @@ export default function SideBar({ open, handleDrawerClose }) {
       <List>
         {array1.map((item) => (
           <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              onClick={() => {
-                navigate(item.path);
-              }}
-              sx={[
-                { minHeight: 48, px: 2.5 },
-                open
-                  ? { justifyContent: "initial" }
-                  : { justifyContent: "center" },
-                {
-                  bgcolor:
-                    location.pathname === item.path
-                      ? theme.palette.mode === "dark"
-                        ? grey[800]
-                        : grey[300]
-                      : null,
-                },
-              ]}
-            >
-              <ListItemIcon
+            <Tooltip title={open ? null : item.text} placement="left">
+              <ListItemButton
+                onClick={() => {
+                  navigate(item.path);
+                }}
                 sx={[
-                  { minWidth: 0, justifyContent: "center" },
-                  open ? { mr: 3 } : { mr: "auto" },
+                  { minHeight: 48, px: 2.5 },
+                  open
+                    ? { justifyContent: "initial" }
+                    : { justifyContent: "center" },
+                  {
+                    bgcolor:
+                      location.pathname === item.path
+                        ? theme.palette.mode === "dark"
+                          ? grey[800]
+                          : grey[300]
+                        : null,
+                  },
                 ]}
               >
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.name}
-                sx={[open ? { opacity: 1 } : { opacity: 0 }]}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={[
+                    { minWidth: 0, justifyContent: "center" },
+                    open ? { mr: 3 } : { mr: "auto" },
+                  ]}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.text}
+                  sx={[open ? { opacity: 1 } : { opacity: 0 }]}
+                />
+              </ListItemButton>
+            </Tooltip>
           </ListItem>
         ))}
       </List>
