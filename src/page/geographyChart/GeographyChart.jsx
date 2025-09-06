@@ -122,12 +122,13 @@ function GeographyCgart() {
         }}
         features={geo.features}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        projectionScale={135}
         colors="nivo"
         domain={[0, 1000000]}
         unknownColor="#666666"
         label="properties.name"
         valueFormat=".2s"
-        enableGraticule={true}
+        enableGraticule={false}
         graticuleLineColor="#dddddd"
         borderWidth={0.5}
         borderColor="#152538"
