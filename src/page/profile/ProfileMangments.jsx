@@ -1,6 +1,7 @@
 import { Box, Button, MenuItem, Stack, TextField } from "@mui/material";
 import React, { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
+import Header from "../../components/Header";
 import { useForm } from "react-hook-form";
 
 const regEmail =
@@ -66,6 +67,7 @@ function ProfileMangments() {
       noValidate
       autoComplete="off"
     >
+      <Header title="CREATE USER" subTitle="Create a New User Profile" />
       <Stack direction="row" spacing={2}>
         <TextField
           error={errors.firstName}

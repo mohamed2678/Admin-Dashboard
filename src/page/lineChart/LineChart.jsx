@@ -1,13 +1,15 @@
 import React from 'react'
 import Line from './Line'
-import { useTheme } from '@mui/material'
+import Header from '../../components/Header'
 
 
 
 function LineChart() {
-  const theme = useTheme()
   return (
+    <>
+    <Header title="LINE CHART" subTitle="Simple Line Chart" />
     <Line />
+    </>
   )
 }
 

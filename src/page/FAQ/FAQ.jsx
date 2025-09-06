@@ -6,12 +6,14 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
+import Header from '../../components/Header'
 import { Stack  } from "@mui/material";
 
 
 function FAQ() {
    return (
-    <Stack direction="column" gap={2}>
+     <Stack direction="column" gap={2}>
+      <Header title="FAQ" subTitle="Frequently Asked Questions Page" />
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

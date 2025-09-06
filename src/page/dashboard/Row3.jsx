@@ -1,7 +1,7 @@
 import { Box, Paper, Stack, Typography, useTheme } from "@mui/material";
-import Pie from "../PieChart/PieChart";
+import Pie from "../PieChart/Pie";
 import Bar from "../barChart/Bar";
-import Geo from "../geographyChart/GeographyChart";
+import Geo from "../geographyChart/Geo";
 
 const Row3 = () => {
   const theme = useTheme();
@@ -26,7 +26,7 @@ const Row3 = () => {
         </Typography>
       </Paper>
 
-      <Paper sx={{ flexGrow: 1, minWidth: "400px", width: "33%" }}>
+      <Paper sx={{ flexGrow: 1, minWidth: "400px", width: "33%",  }}>
         <Typography
           color={theme.palette.secondary.main}
           variant="h6"
@@ -36,7 +36,7 @@ const Row3 = () => {
           Sales Quantity
         </Typography>
 
-        <Bar isDashbord={true} />
+        <Bar isDashboard={true} />
       </Paper>
 
       <Paper sx={{ flexGrow: 1, minWidth: "400px", width: "33%" }}>
