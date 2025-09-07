@@ -31,7 +31,6 @@ This repository is an admin dashboard built with React and Vite. It uses Materia
 1. Install dependencies
 
 ```powershell
-cd "H:\Learn React\Admin-Dashboard"
 npm install
 ```
 
@@ -132,9 +131,8 @@ Adjust your hosting provider as needed.
 - Run the dev server and add simple tests/manual checks
 - Open a PR with a clear description of changes
 
-## Contact / Support
+-------------------------------------------------------------------------------
 
-If you want me to:
 - run a Lighthouse report and iterate on the high-impact items listed above
 - lazy-load/instrument more heavy components (DataGrid on Contacts/Team)
 - optimize images and assets
